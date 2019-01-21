@@ -8,14 +8,14 @@ go version 1.2 以上 をサポートしています。
 
 インストールしていない場合 [go install](https://golang.org/doc/install)からインストールしてください
 
-インストールした後は、以下のコマンドから、インストールできます。
+インストールした後は、以下のコマンドから、インストールできます。
    
 ```bash
 $ go get github.com/Suwato/dohash
 ```
 
 ##  CLIとしてのInstallation
-pathを通して installコマンドを利用すると、cliとして利用できます。
+pathを通して installコマンドを利用すると、cliとして利用できます。
 ```bash
 export PATH=$PATH:$GOPATH/bin
 ```
@@ -25,7 +25,7 @@ export PATH=$PATH:$GOPATH/bin
 $ go install
 ```
 
-* 実行例
+* 実行例
 ```bash
 $ dohash -f test.csv -a sha512 --salt dasldk
 ```
@@ -35,7 +35,7 @@ $ dohash -f test.csv -a sha512 --salt dasldk
 dohash -f test.csv -a sha512 --salt dasldk
 ```
 
-## Global Options
+## Global Options
 ```
 --file value, -f value
        ハッシュ化したいcsvのpathを指定してください。
