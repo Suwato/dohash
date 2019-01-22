@@ -60,3 +60,8 @@ dohash -f test.csv -a sha512 --salt dasldk
 --version, -v                
         print the version
 ```
+
+# TODO
+* 進捗表示
+* 並列処理
+* マッピング用のCSV出力
