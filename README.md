@@ -13,6 +13,9 @@ go version 1.2 以上 をサポートしています。
 ```bash
 $ go get github.com/Suwato/dohash
 ```
+```bash
+$ ./setup.sh
+```
 
 ##  CLIとしてのInstallation
 pathを通して installコマンドを利用すると、cliとして利用できます。
