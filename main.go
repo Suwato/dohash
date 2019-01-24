@@ -4,13 +4,15 @@ import (
 	"log"
 	"os"
 
-	"github.com/urfave/cli"
-	"fmt"
-	"encoding/csv"
-	"io"
 	"crypto/sha256"
 	"crypto/sha512"
+	"encoding/csv"
 	"encoding/hex"
+	"fmt"
+	"io"
+
+	"github.com/urfave/cli"
+	"strconv"
 )
 
 const version = "0.1.0"
@@ -77,6 +79,7 @@ func main() {
 
 		w := csv.NewWriter(writeFr)
 
+		i := 0
 		for {
 			r, err := r.Read()
 
@@ -92,6 +95,9 @@ func main() {
 				fmt.Errorf("error:%s", err)
 			}
 
+			i++
+
+			fmt.Println(strconv.Itoa(i) + " : " + r[0] + " : " + hash)
 			w.Write([]string{hash})
 
 		}
