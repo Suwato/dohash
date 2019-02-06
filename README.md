@@ -16,6 +16,10 @@ $ go get github.com/Suwato/dohash
 ```bash
 $ ./setup.sh
 ```
+# Build
+```bash
+$ go build .
+```
 
 ##  CLIとしてのInstallation
 pathを通して installコマンドを利用すると、cliとして利用できます。
