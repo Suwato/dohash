@@ -21,7 +21,7 @@ func main() {
 
 	var file string
 	var algorithm string
-	var stretching string
+	var stretching int
 	var salt string
 
 	app := cli.NewApp()
@@ -41,10 +41,10 @@ func main() {
 			Value:       "sha256",
 			Destination: &algorithm,
 		},
-		cli.StringFlag{
+		cli.IntFlag{
 			Name:        "stretching",
 			Usage:       "ストレッチングの回数を指定してください。",
-			Value:       "10",
+			Value:       10,
 			Destination: &stretching,
 		},
 		cli.StringFlag{
@@ -89,7 +89,24 @@ func main() {
 				return err
 			}
 
-			hash, err := hash(r[0], algorithm, salt)
+			h, err := hash(r[0], algorithm, salt)
+
+			if err != nil {
+				return err
+			}
+
+			s := stretching
+
+			for s > 0 {
+				s--
+				h, err = hash(h, algorithm, salt)
+
+				if err != nil {
+					return err
+				}
+
+			}
+
 
 			if err != nil {
 				fmt.Errorf("error:%s", err)
@@ -97,8 +114,8 @@ func main() {
 
 			i++
 
-			fmt.Println(strconv.Itoa(i) + " : " + r[0] + " : " + hash)
-			w.Write([]string{hash})
+			fmt.Println(strconv.Itoa(i) + " : " + r[0] + " : " + h)
+			w.Write([]string{h})
 
 		}
 
